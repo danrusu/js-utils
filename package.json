@@ -1,0 +1,32 @@
+{
+  "name": "js-utils",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "JavaScript utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danrusu/js-utils.git"
+  },
+  "keywords": [
+    "soft-assert",
+    "utilities",
+    "utils"
+  ],
+  "author": "Dan Drusu\u001b[D\u001b[D\u001b[D\u001b[D\u001bR\u001b[\u001b[6~\u001b[6~\u001b[6~\u001b[6~\u001b[6~\u001b[C\u001b[C\u001b[C\u001busu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danrusu/js-utils/issues"
+  },
+  "homepage": "https://github.com/danrusu/js-utils#readme",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.0"
+  }
+}
