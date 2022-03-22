@@ -3,7 +3,9 @@ module.exports = () => {
   const errors = [];
 
   const assert = (...assertions) => {
-    toAssert = [...assertions];
+    toAssert = [
+      ...assertions.filter(assertion => assertion instanceof Function),
+    ];
   };
 
   const assertAll = () => {

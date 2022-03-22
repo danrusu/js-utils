@@ -14,6 +14,7 @@ describe('Soft assert test', () => {
       soft.assert(
         () => expect(1, 'numbers check').to.equal(2),
         () => expect(1).to.equal(1),
+        'this is not an asserton',
         () => expect([1, 2, 3], 'array check').to.include(4),
         () => expect(true, 'boolean check').to.be.false,
         () => expect(true).to.be.true
