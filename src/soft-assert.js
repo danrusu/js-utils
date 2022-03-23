@@ -1,21 +1,22 @@
 module.exports = () => {
-  let toAssert = [];
-  const errors = [];
+  let assertions = [];
 
-  const assert = (...assertions) => {
-    toAssert = [
-      ...assertions.filter(assertion => assertion instanceof Function),
-    ];
+  const isFunction = assertion => assertion instanceof Function;
+
+  const add = (...newAssertions) => {
+    assertions = [...assertions, ...newAssertions.filter(isFunction)];
   };
 
   const assertAll = () => {
-    toAssert.forEach(assertion => {
+    const errors = [];
+    assertions.forEach(assertion => {
       try {
         assertion();
       } catch (err) {
         errors.push(err);
       }
     });
+    assertions = [];
     if (errors.length > 0) {
       throw new Error(
         `${errors.length} failed assertions\n${errors
@@ -25,7 +26,7 @@ module.exports = () => {
     }
   };
   return {
-    assert,
+    add,
     assertAll,
   };
 };
