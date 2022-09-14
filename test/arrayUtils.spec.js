@@ -14,7 +14,7 @@ describe('arrayUtils.shuffle test', () => {
 });
 
 describe('arrayUtils.range test', () => {
-  it('shuffles array', () => {
+  it('generates range of integers', () => {
     const EXPECTED_RANGE = [5, 6, 7, 8, 9, 10];
     expect(range(5, 10)).to.deep.equal(EXPECTED_RANGE);
   });
