@@ -1,15 +1,17 @@
 // similar to console.table
 const table = (contentObject, attributesObject = {}) => {
-  const allHeaders = Object.entries(contentObject).reduce(
-    (headers, [index, value]) => [
-      ...new Set([...headers, ...Object.keys(value)]),
-    ],
-    []
-  );
+  const allHeaders = Object.entries(contentObject)
+    .reduce(
+      (headers, [index, value]) => [
+        ...new Set([...headers, ...Object.keys(value)]),
+      ],
+      []
+    )
+    .sort();
 
   const tableHeaders = allHeaders.reduce(
     (acc, header) => acc + `<th>${header}</th>`,
-    '<th></th>'
+    '<th>(index)</th>'
   );
 
   const tableBody = Object.entries(contentObject).reduce(
@@ -18,9 +20,10 @@ const table = (contentObject, attributesObject = {}) => {
         (acc, header) => `${acc}<td>${keyValuePair[header] ?? ''}</td>`,
         `<td>${index}</td>`
       );
-      return `${body}\n<tr>${cells}</tr>`;
+      body.push(`<tr>${cells}</tr>`);
+      return body;
     },
-    ''
+    []
   );
 
   const attributes = Object.entries(attributesObject).reduce(
@@ -32,7 +35,7 @@ const table = (contentObject, attributesObject = {}) => {
   return [
     `<table${attributes}>`,
     `<tr>${tableHeaders}</tr>`,
-    `${tableBody}`,
+    ...tableBody,
     '</table>',
   ].join('\n');
 };
