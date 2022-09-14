@@ -10,7 +10,7 @@ const table = (contentObject, attributesObject = {}) => {
     .sort();
 
   const tableHeaders = allHeaders.reduce(
-    (acc, header) => acc + `<th>${header}</th>`,
+    (acc, header) => `${acc}<th>${header}</th>`,
     '<th>(index)</th>'
   );
 
