@@ -8,11 +8,13 @@ describe('tableGenerator test (similar to console.table)', () => {
       { name: 'tania', age: 9 },
     ];
 
-    const EXPECTED_HTML = `<table id="array" class="family">
-<tr><th>(index)</th><th>age</th><th>employed</th><th>name</th></tr>
-<tr><td>0</td><td>40</td><td>true</td><td>dan</td></tr>
-<tr><td>1</td><td>9</td><td></td><td>tania</td></tr>
-</table>`;
+    const EXPECTED_HTML = [
+      '<table id="array" class="family">',
+      '<tr><th>(index)</th><th>age</th><th>employed</th><th>name</th></tr>',
+      '<tr><td>0</td><td>40</td><td>true</td><td>dan</td></tr>',
+      '<tr><td>1</td><td>9</td><td></td><td>tania</td></tr>',
+      '</table>',
+    ].join('\n');
 
     expect(table(FAMILY_ARRAY, { id: 'array', class: 'family' })).to.equal(
       EXPECTED_HTML
@@ -24,11 +26,13 @@ describe('tableGenerator test (similar to console.table)', () => {
       daughter: { name: 'tania', age: 9 },
     };
 
-    const EXPECTED_HTML = `<table id="object" class="family">
-<tr><th>(index)</th><th>age</th><th>employed</th><th>name</th></tr>
-<tr><td>father</td><td>40</td><td>true</td><td>dan</td></tr>
-<tr><td>daughter</td><td>9</td><td></td><td>tania</td></tr>
-</table>`;
+    const EXPECTED_HTML = [
+      '<table id="object" class="family">',
+      '<tr><th>(index)</th><th>age</th><th>employed</th><th>name</th></tr>',
+      '<tr><td>father</td><td>40</td><td>true</td><td>dan</td></tr>',
+      '<tr><td>daughter</td><td>9</td><td></td><td>tania</td></tr>',
+      '</table>',
+    ].join('\n');
 
     expect(table(FAMILY_OBJECT, { id: 'object', class: 'family' })).to.equal(
       EXPECTED_HTML
