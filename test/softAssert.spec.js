@@ -1,8 +1,8 @@
 const { expect, assert } = require('chai');
-const softAssert = require('../src/soft-assert')();
+const softAssert = require('../src/softAssert')();
 
-describe('Soft assert test', () => {
-  it('Collects and throws relevant error', () => {
+describe('softAssert test', () => {
+  it('collects and throws relevant error', () => {
     const EXPECTED_ASSERTION_ERROR = [
       '3 failed assertions',
       'numbers check: expected 1 to equal 2',
@@ -28,7 +28,7 @@ describe('Soft assert test', () => {
     );
   });
 
-  it('Does not throw if no assertion fails', () => {
+  it('does not throw if no assertion fails', () => {
     assert.doesNotThrow(() => {
       softAssert.add(
         () => expect(1.5, 'numbers check').to.equal(1.5),
