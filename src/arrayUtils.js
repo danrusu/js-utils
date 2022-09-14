@@ -1,3 +1,6 @@
+const range = (from, to) =>
+  [...Array(to - from + 1).keys()].map(i => i + to - from);
+
 const shuffle = array => {
   const arrayToShuffle = [...array];
   const shuffled = [];
@@ -8,4 +11,4 @@ const shuffle = array => {
   return shuffled;
 };
 
-module.exports = { shuffle };
+module.exports = { range, shuffle };
