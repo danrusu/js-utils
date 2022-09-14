@@ -3,12 +3,11 @@ const range = (from, to) =>
 
 const shuffle = array => {
   const arrayToShuffle = [...array];
-  const shuffled = [];
-  while (arrayToShuffle.length) {
+  return range(0, arrayToShuffle.length - 1).reduce((acc, _i) => {
     const random = Math.floor(Math.random() * arrayToShuffle.length);
-    shuffled.push(...arrayToShuffle.splice(random, 1));
-  }
-  return shuffled;
+    acc.push(...arrayToShuffle.splice(random, 1));
+    return acc;
+  }, []);
 };
 
 module.exports = { range, shuffle };
