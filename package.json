@@ -5,7 +5,7 @@
   "description": "JavaScript utilities",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.spec.js"
+    "test": "mocha 'test/**/*.spec.js'"
   },
   "repository": {
     "type": "git",
@@ -16,15 +16,17 @@
     "utilities",
     "utils"
   ],
-  "author": "Dan Drusu\u001b[D\u001b[D\u001b[D\u001b[D\u001bR\u001b[\u001b[6~\u001b[6~\u001b[6~\u001b[6~\u001b[6~\u001b[C\u001b[C\u001b[C\u001busu",
+  "author": "Dan Rusu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/danrusu/js-utils/issues"
   },
   "homepage": "https://github.com/danrusu/js-utils#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "chai": "^4.3.6",
-    "mocha": "^9.2.2"
+    "mocha": "^9.2.2",
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "prettier": "^2.6.0"
