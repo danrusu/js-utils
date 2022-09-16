@@ -12,7 +12,10 @@ describe('urlValidation.getBrokenUrls test', function () {
     const urls = shuffle([...delayUrls, ...errorUrls, ...notFoundUrls]);
     const concurrency = 100;
 
-    const brokenUrls = await getBrokenUrls(urls, concurrency);
+    const brokenUrls = await getBrokenUrls(urls, {
+      method: 'HEAD',
+      concurrency,
+    });
 
     const brokenUrlsStatuses = brokenUrls
       .map(({ status }) => status)
@@ -23,5 +26,7 @@ describe('urlValidation.getBrokenUrls test', function () {
       ...Array(5).fill(500),
     ];
     expect(brokenUrlsStatuses).to.deep.equal(EXPECTED_BROKEN_URLS_STATUSES);
+
+    console.log(JSON.stringify(brokenUrlsStatuses, null, 2));
   });
 });
