@@ -29,4 +29,23 @@ describe('urlValidation.getBrokenUrls test', function () {
 
     console.log(JSON.stringify(brokenUrlsStatuses, null, 2));
   });
+
+  it('should collect correct errors in case of httpClient failures', async () => {
+    const MOCK_HTTP_CLIENT = url => Promise.reject('NETWORK ERROR');
+
+    const brokenUrls = await getBrokenUrls(['url1', 'url2'], {
+      httpClient: MOCK_HTTP_CLIENT,
+    });
+
+    expect(brokenUrls).to.deep.equal([
+      {
+        error: 'NETWORK ERROR',
+        url: 'url1',
+      },
+      {
+        error: 'NETWORK ERROR',
+        url: 'url2',
+      },
+    ]);
+  });
 });

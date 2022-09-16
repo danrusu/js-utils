@@ -10,15 +10,16 @@ const getBrokenUrls = async (
     body,
     concurrency = 1,
     isBrokenFn = response => response?.status !== 200,
+    httpClient = fetch,
   },
 ) =>
   Promise.map(
     urls,
-    url => {
+    async url => {
       try {
-        return fetch(url, { method, headers, body });
+        return await httpClient(url, { method, headers, body });
       } catch (error) {
-        return { error: error.message };
+        return { url, error };
       }
     },
     {
@@ -28,12 +29,16 @@ const getBrokenUrls = async (
     .filter(isBrokenFn)
     .map(response => {
       const processedResponse = {
-        url: response?.url,
-        status: response?.status,
-        statusText: response?.statusText,
+        url: response.url,
       };
       if (response?.error) {
         processedResponse.error = response.error;
+      }
+      if (response?.status) {
+        processedResponse.status = response?.status;
+      }
+      if (response.statusText) {
+        processedResponse.statusText = response?.statusText;
       }
       return processedResponse;
     });
