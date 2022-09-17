@@ -2,7 +2,7 @@
 const Promise = require('bluebird');
 const fetch = require('node-fetch');
 
-const getBrokenUrls = async (
+const getBrokenUrls = (
   urls,
   {
     method = 'GET',

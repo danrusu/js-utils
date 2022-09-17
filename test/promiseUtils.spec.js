@@ -23,7 +23,7 @@ describe('promiseUtils', () => {
 
   describe('waitForAll test', () => {
     const targets = [10, 20, 30];
-    const timeout = Math.max(...targets) + 5;
+    const timeout = Math.max(...targets) + 10;
     const toPromiseMapFn = target =>
       delay({ fnArgs: [target], duration: target });
 
