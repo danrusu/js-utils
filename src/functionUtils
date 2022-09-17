@@ -1,7 +1,6 @@
-// params = [{ name:  'test' }, { isDemo: true }]s
+// params = { name:  'test', isDemo: true }
 const validateMandatoryParams = params =>
-  params.forEach(param => {
-    const [paramName, paramValue] = Object.entries(param)[0];
+  Object.entries(params).forEach(([paramName, paramValue]) => {
     if (paramValue === undefined) {
       throw new Error(`Mandatory param missing: ${paramName}`);
     }

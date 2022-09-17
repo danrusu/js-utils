@@ -17,7 +17,7 @@ describe('tableGenerator test (similar to console.table)', () => {
     ].join('\n');
 
     expect(table(FAMILY_ARRAY, { id: 'array', class: 'family' })).to.equal(
-      EXPECTED_HTML
+      EXPECTED_HTML,
     );
   });
   it('Should return html table from an object like {...key1: {...key11: primitiveValue11 }}', () => {
@@ -35,7 +35,7 @@ describe('tableGenerator test (similar to console.table)', () => {
     ].join('\n');
 
     expect(table(FAMILY_OBJECT, { id: 'object', class: 'family' })).to.equal(
-      EXPECTED_HTML
+      EXPECTED_HTML,
     );
   });
 });

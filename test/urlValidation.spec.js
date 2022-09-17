@@ -2,50 +2,50 @@ const { expect } = require('chai');
 const { shuffle } = require('../src/arrayUtils');
 const { getBrokenUrls } = require('../src/urlValidation');
 
-describe('urlValidation.getBrokenUrls test', function () {
-  this.timeout(5000);
-  it('should collect broken urls', async () => {
-    const delayUrls = Array(90).fill('https://postman-echo.com/delay/1');
-    const errorUrls = Array(5).fill('https://postman-echo.com/status/500');
-    const notFoundUrls = Array(5).fill('https://postman-echo.com/status/404');
+describe('urlValidation test', () => {
+  describe('getBrokenUrls test', function () {
+    this.timeout(5000);
+    it('should collect broken urls', async () => {
+      const delayUrls = Array(90).fill('https://postman-echo.com/delay/1');
+      const errorUrls = Array(5).fill('https://postman-echo.com/status/500');
+      const notFoundUrls = Array(5).fill('https://postman-echo.com/status/404');
 
-    const urls = shuffle([...delayUrls, ...errorUrls, ...notFoundUrls]);
-    const concurrency = 100;
+      const urls = shuffle([...delayUrls, ...errorUrls, ...notFoundUrls]);
+      const concurrency = 100;
 
-    const brokenUrls = await getBrokenUrls(urls, {
-      method: 'HEAD',
-      concurrency,
+      const brokenUrls = await getBrokenUrls(urls, {
+        method: 'HEAD',
+        concurrency,
+      });
+
+      const brokenUrlsStatuses = brokenUrls
+        .map(({ status }) => status)
+        .sort((x, y) => x - y);
+
+      const EXPECTED_BROKEN_URLS_STATUSES = [
+        ...Array(5).fill(404),
+        ...Array(5).fill(500),
+      ];
+      expect(brokenUrlsStatuses).to.deep.equal(EXPECTED_BROKEN_URLS_STATUSES);
     });
 
-    const brokenUrlsStatuses = brokenUrls
-      .map(({ status }) => status)
-      .sort((x, y) => x - y);
+    it('should collect correct errors in case of httpClient failures', async () => {
+      const MOCK_HTTP_CLIENT = url => Promise.reject('NETWORK ERROR');
 
-    const EXPECTED_BROKEN_URLS_STATUSES = [
-      ...Array(5).fill(404),
-      ...Array(5).fill(500),
-    ];
-    expect(brokenUrlsStatuses).to.deep.equal(EXPECTED_BROKEN_URLS_STATUSES);
+      const brokenUrls = await getBrokenUrls(['url1', 'url2'], {
+        httpClient: MOCK_HTTP_CLIENT,
+      });
 
-    console.log(JSON.stringify(brokenUrlsStatuses, null, 2));
-  });
-
-  it('should collect correct errors in case of httpClient failures', async () => {
-    const MOCK_HTTP_CLIENT = url => Promise.reject('NETWORK ERROR');
-
-    const brokenUrls = await getBrokenUrls(['url1', 'url2'], {
-      httpClient: MOCK_HTTP_CLIENT,
+      expect(brokenUrls).to.deep.equal([
+        {
+          error: 'NETWORK ERROR',
+          url: 'url1',
+        },
+        {
+          error: 'NETWORK ERROR',
+          url: 'url2',
+        },
+      ]);
     });
-
-    expect(brokenUrls).to.deep.equal([
-      {
-        error: 'NETWORK ERROR',
-        url: 'url1',
-      },
-      {
-        error: 'NETWORK ERROR',
-        url: 'url2',
-      },
-    ]);
   });
 });

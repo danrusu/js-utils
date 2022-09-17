@@ -24,11 +24,12 @@
   "homepage": "https://github.com/danrusu/js-utils#readme",
   "dependencies": {
     "bluebird": "^3.7.2",
-    "chai": "^4.3.6",
-    "mocha": "^9.2.2",
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^9.2.2",
     "prettier": "^2.6.0"
   }
 }
