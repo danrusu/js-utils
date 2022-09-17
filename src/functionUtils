@@ -1,0 +1,10 @@
+// params = [{ name:  'test' }, { isDemo: true }]s
+const validateMandatoryParams = params =>
+  params.forEach(param => {
+    const [paramName, paramValue] = Object.entries(param)[0];
+    if (paramValue === undefined) {
+      throw new Error(`Mandatory param missing: ${paramName}`);
+    }
+  });
+
+module.exports = { validateMandatoryParams };
