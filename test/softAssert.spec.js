@@ -1,7 +1,7 @@
 const { expect, assert } = require('chai');
 const softAssert = require('../src/softAssert')();
 
-describe('softAssert test', () => {
+describe('softAssert', () => {
   it('collects and throws relevant error', () => {
     const EXPECTED_ASSERTION_ERROR = [
       '3 failed assertions',
@@ -15,16 +15,16 @@ describe('softAssert test', () => {
           () => expect(1, 'numbers check').to.equal(2),
           () => expect(1).to.equal(1),
           'this is not an assertion',
-          () => expect([1, 2, 3], 'array check').to.include(4)
+          () => expect([1, 2, 3], 'array check').to.include(4),
         );
         softAssert.add(
           () => expect(true, 'boolean check').to.be.false,
-          () => expect(true).to.be.true
+          () => expect(true).to.be.true,
         );
         softAssert.assertAll();
       },
       Error,
-      EXPECTED_ASSERTION_ERROR
+      EXPECTED_ASSERTION_ERROR,
     );
   });
 
@@ -35,7 +35,7 @@ describe('softAssert test', () => {
         () => expect(1).to.equal(1),
         () => expect([1, 2, 3], 'array check').to.include(2),
         () => expect(undefined).to.be.undefined,
-        () => expect(true).to.be.true
+        () => expect(true).to.be.true,
       );
       softAssert.assertAll();
     });

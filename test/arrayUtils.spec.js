@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { range, shuffle } = require('../src/arrayUtils');
 
-describe('arrayUtils. test', () => {
+describe('arrayUtils', () => {
   describe('shuffle test', () => {
     it('shuffles array', () => {
       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

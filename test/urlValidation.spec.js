@@ -2,10 +2,10 @@ const { expect } = require('chai');
 const { shuffle } = require('../src/arrayUtils');
 const { getBrokenUrls } = require('../src/urlValidation');
 
-describe('urlValidation test', () => {
+describe('urlValidation', () => {
   const POSTMAN_ECHO_SERVICE_URL = 'https://postman-echo.com';
 
-  describe('getBrokenUrls test', function () {
+  describe('getBrokenUrls', function () {
     this.timeout(5000);
     it('should collect broken urls', async () => {
       const delayUrls = Array(90).fill(`${POSTMAN_ECHO_SERVICE_URL}/delay/1`);

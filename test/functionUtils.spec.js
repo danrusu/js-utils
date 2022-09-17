@@ -2,8 +2,8 @@ const { assert } = require('chai');
 
 const { validateMandatoryParams } = require('../src/functionUtils');
 
-describe('functionUtils test', () => {
-  describe('validateMandatoryParams test', () => {
+describe('functionUtils', () => {
+  describe('validateMandatoryParams', () => {
     it('should throw for invalid parameter', async () => {
       const test = 'demo';
       const id = 1111;

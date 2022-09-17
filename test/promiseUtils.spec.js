@@ -4,8 +4,8 @@ chai.use(require('chai-as-promised'));
 
 const { delay, waitForAll, waitForPromise } = require('../src/promiseUtils');
 
-describe('promiseUtils test', () => {
-  describe('waitForPromise test', () => {
+describe('promiseUtils', () => {
+  describe('waitForPromise', () => {
     it('should work if promise is fulfilled within the timeout', async () => {
       const result = await waitForPromise(
         delay({ fnArgs: [1111], duration: 10 }),
