@@ -9,9 +9,9 @@ describe('functionUtils', () => {
       const id = 1111;
       let duration;
       assert.throws(
-        () => validateMandatoryParams({ name, id, duration }),
+        () => validateMandatoryParams({ test, id, duration }),
         Error,
-        'name is not defined',
+        'Mandatory param missing: duration',
       );
     });
   });
