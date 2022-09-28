@@ -1,8 +1,8 @@
 # js-utils
 
-JavaScript utilities package
+![Tests](https://github.com/danrusu/js-utils/actions/workflows/test.yaml/badge.svg)
 
-![Tests](https://github.com/danrusu/js-utils/actions/workflows/test.yml/badge.svg)
+JavaScript utilities package
 
 ### Run all unit tests
 
