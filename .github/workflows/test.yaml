@@ -1,0 +1,23 @@
+name: TESTS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  api-tests:
+    name: TESTS
+    runs-on: ubuntu-20.04
+    timeout-minutes: 1
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t js-utils .
+
+      - name: Run tests
+        run: docker run --rm js-utils

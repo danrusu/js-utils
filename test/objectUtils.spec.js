@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { deepKeysSort } = require('../../js-utils/src/objectUtils');
+const { deepKeysSort } = require('../src/objectUtils');
 
 describe('objectUtils', () => {
   describe('deepKeysSort', () => {
