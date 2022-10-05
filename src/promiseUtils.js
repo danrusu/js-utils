@@ -31,4 +31,20 @@ const waitForAll = ({
   );
 };
 
-module.exports = { identity, delay, waitForPromise, waitForAll };
+function mapRejectToErrorObject(details = {}) {
+  return async function (promise) {
+    try {
+      return await promise;
+    } catch (err) {
+      return { ...details, error: err.message };
+    }
+  };
+}
+
+module.exports = {
+  delay,
+  identity,
+  mapRejectToErrorObject,
+  waitForPromise,
+  waitForAll,
+};

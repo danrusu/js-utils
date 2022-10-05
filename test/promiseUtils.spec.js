@@ -2,7 +2,12 @@ const chai = require('chai');
 const expect = chai.expect;
 chai.use(require('chai-as-promised'));
 
-const { delay, waitForAll, waitForPromise } = require('../src/promiseUtils');
+const {
+  delay,
+  mapRejectToErrorObject,
+  waitForAll,
+  waitForPromise,
+} = require('../src/promiseUtils');
 
 describe('promiseUtils', () => {
   describe('waitForPromise', () => {
@@ -21,8 +26,8 @@ describe('promiseUtils', () => {
     });
   });
 
-  describe('waitForAll test', () => {
-    const targets = [10, 20, 30];
+  describe.only('waitForAll test', () => {
+    const targets = [10, 20, 30, 20, 10];
     const timeout = Math.max(...targets) + 10;
     const toPromiseMapFn = target =>
       delay({ fnArgs: [target], duration: target });
@@ -32,10 +37,39 @@ describe('promiseUtils', () => {
         targets,
         toPromiseMapFn,
         timeout,
-        concurrency: 3,
+        concurrency: 5,
       });
 
       expect(results).to.deep.equal(targets);
+    });
+  });
+
+  describe('mapRejectToErrorObject', () => {
+    it('map rejected promisses to { details, error: error.message } objects', async () => {
+      const fulfill = result => Promise.resolve(result);
+      const reject = errorMessage => Promise.reject(new Error(errorMessage));
+      const error = 'test error';
+      const errorDetails = 'error details';
+
+      const promises = [
+        ...Array(3).fill(0).map(fulfill),
+        ...Array(3).fill(error).map(reject),
+      ];
+
+      const mappedPromises = [
+        ...promises.map(mapRejectToErrorObject()),
+        ...[error].map(reject).map(mapRejectToErrorObject({ errorDetails })),
+      ];
+
+      const EXPECTED_RESULTS = [
+        ...Array(3).fill(0),
+        ...Array(3).fill({ error }),
+        { errorDetails, error },
+      ];
+
+      const results = await Promise.all(mappedPromises);
+
+      expect(results).to.deep.equal(EXPECTED_RESULTS);
     });
   });
 });
