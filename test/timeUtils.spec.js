@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const { logDuration } = require('../src/timeUtils');
 
-describe.only('logDuration', function () {
+describe('logDuration', function () {
   this.timeout(5000);
   const POSTMAN_ECHO_SERVICE_DELAY_URL = 'https://postman-echo.com/delay';
 

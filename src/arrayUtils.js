@@ -10,4 +10,15 @@ const shuffle = array => {
   }, []);
 };
 
-module.exports = { range, shuffle };
+function unique(objectsArray, equalsFn = o1 => o2 => o1 == o2) {
+  const uniqueArray = [];
+  for (let item of objectsArray) {
+    const isAlreadySaved = uniqueArray.find(equalsFn(item));
+    if (!isAlreadySaved) {
+      uniqueArray.push(item);
+    }
+  }
+  return uniqueArray;
+}
+
+module.exports = { range, shuffle, unique };
