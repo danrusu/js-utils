@@ -1,5 +1,5 @@
 const range = (from, to) =>
-  [...Array(to - from + 1).keys()].map(i => i + to - from);
+  Array.from({ length: to - from + 1 }, (_, index) => index + to - from);
 
 const shuffle = array => {
   const arrayToShuffle = [...array];
