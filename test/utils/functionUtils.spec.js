@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { validateMandatoryParams } = require('../src/functionUtils');
+const { validateMandatoryParams } = require('../../src/utils/functionUtils');
 
 describe('functionUtils', () => {
   describe('validateMandatoryParams', () => {

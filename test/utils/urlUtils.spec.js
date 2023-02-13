@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const { shuffle } = require('../src/arrayUtils');
-const { getBrokenUrls } = require('../src/urlUtils');
+const { shuffle } = require('../../src/utils/arrayUtils');
+const { getBrokenUrls } = require('../../src/utils/urlUtils');
 
 describe('urlValidation', () => {
   const POSTMAN_ECHO_SERVICE_URL = 'https://postman-echo.com';

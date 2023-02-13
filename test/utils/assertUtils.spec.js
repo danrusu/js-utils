@@ -1,5 +1,5 @@
 const { expect, assert } = require('chai');
-const softAssert = require('../src/softAssert')();
+const softAssert = require('../../src/utils/assertUtils')();
 
 describe('softAssert', () => {
   it('collects and throws relevant error', () => {

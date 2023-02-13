@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const { logDuration } = require('../src/timeUtils');
+const { logDuration } = require('../../src/utils/timeUtils');
 
 describe('logDuration', function () {
   this.timeout(5000);

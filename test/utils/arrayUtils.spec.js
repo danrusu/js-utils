@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { range, shuffle, unique } = require('../src/arrayUtils');
+const { range, shuffle, unique } = require('../../src/utils/arrayUtils');
 
 describe('arrayUtils', () => {
   describe('shuffle test', () => {

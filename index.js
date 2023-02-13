@@ -1,17 +1,14 @@
-const array = require('./src/arrayUtils');
-const fn = require('./src/functionUtils');
-const object = require('./src/objectUtils');
-const promise = require('./src/promiseUtils');
-const softAssert = require('./src/softAssert');
-const time = require('./src/timeUtils');
-const url = require('./src/urlUtils');
+const utilsModules = [
+  'arrayUtils',
+  'functionUtils',
+  'objectUtils',
+  'promiseUtils',
+  'softAssert',
+  'timeUtils',
+  'urlUtils',
+];
 
-module.exports = {
-  array,
-  fn,
-  object,
-  promise,
-  softAssert,
-  time,
-  url,
-};
+module.exports = utilsModules.reduce((exports, utilsModule) => {
+  exports[utilsModule] = require(`./src/utils/${utilsModule}`);
+  return exports;
+}, {});

@@ -7,7 +7,7 @@ const {
   mapRejectToErrorObject,
   waitForAll,
   waitForPromise,
-} = require('../src/promiseUtils');
+} = require('../../src/utils/promiseUtils');
 
 describe('promiseUtils', () => {
   describe('waitForPromise', () => {
