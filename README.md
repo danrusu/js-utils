@@ -2,18 +2,12 @@
 
 ![Tests](https://github.com/danrusu/js-utils/actions/workflows/test.yaml/badge.svg)
 
-JavaScript utilities package
+## JavaScript utilities playground
 
-### Import
+### Install dependencies
 
 ```bash
-npm install -S danrusu-js-utils
-```
-
-### Usage
-
-```javascript
-const jsUtils = require('danrusu-js-utils');
+npm install
 ```
 
 ### Run all unit tests
@@ -21,3 +15,5 @@ const jsUtils = require('danrusu-js-utils');
 ```bash
 npm test
 ```
+
+### [Specs](../test)
