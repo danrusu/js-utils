@@ -21,6 +21,3 @@ jobs:
 
       - name: Run tests
         run: docker run --rm js-utils
-        
-      - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2022.2.2
