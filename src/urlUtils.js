@@ -1,6 +1,5 @@
 //http://bluebirdjs.com/docs/getting-started.html
 const Promise = require('bluebird');
-const fetch = require('node-fetch');
 
 const getBrokenUrls = (
   urls,

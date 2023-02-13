@@ -3,7 +3,10 @@
   "type": "commonjs",
   "version": "1.0.3",
   "description": "JavaScript utilities",
-  "main": "index.js",
+  "main": "index.js",  
+  "engines": {
+    "node": ">=18"
+  },  
   "scripts": {
     "test": "mocha 'test/**/*.spec.js'"
   },

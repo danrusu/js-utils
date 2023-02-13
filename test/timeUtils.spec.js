@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const fetch = require('node-fetch');
 
 const { logDuration } = require('../src/timeUtils');
 
