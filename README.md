@@ -4,16 +4,16 @@
 
 ## JavaScript utilities playground
 
-### Install dependencies
+- ### Install dependencies
 
-```bash
-npm install
-```
+  ```bash
+  npm install
+  ```
 
-### Run all unit tests
+- ### Run all unit tests
 
-```bash
-npm test
-```
+  ```bash
+  npm test
+  ```
 
-### [Specs](../test)
+- ### [Specs](../test)
