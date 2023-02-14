@@ -1,12 +1,12 @@
 {
-  "name": "danrusu-js-utils",
+  "name": "@qatools/js-utils",
   "type": "commonjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JavaScript utilities",
-  "main": "index.js",  
+  "main": "index.js",
   "engines": {
     "node": ">=18"
-  },  
+  },
   "scripts": {
     "test": "mocha 'test/**/*.spec.js'"
   },
@@ -19,7 +19,7 @@
     "utilities",
     "utils"
   ],
-  "author": "Dan Rusu",
+  "author": "Dan Rusu <danginkg@gmail.com> (http://qatools.ro)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/danrusu/js-utils/issues"
