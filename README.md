@@ -16,4 +16,4 @@ npm install --save @qatools/js-utils
 const jsUtils = require('@qatools/js-utils');
 ```
 
-- ### [Specs](../test)
+- ### [Specs](./test)
