@@ -3,7 +3,7 @@ const utilsModules = [
   'functionUtils',
   'objectUtils',
   'promiseUtils',
-  'softAssert',
+  'assertUtils',
   'timeUtils',
   'urlUtils',
 ];
