@@ -4,16 +4,16 @@
 
 ## JavaScript utilities playground
 
-- ### Install dependencies
+- ### Install
 
-  ```bash
-  npm install
-  ```
+```bash
+npm install --save @qatools/js-utils
+```
 
-- ### Run all unit tests
+- ### Use
 
-  ```bash
-  npm test
-  ```
+```javascript
+const jsUtils = require('@qatools/js-utils');
+```
 
 - ### [Specs](../test)
