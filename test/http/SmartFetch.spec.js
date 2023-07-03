@@ -3,11 +3,11 @@ const { SmartFetch } = require('../../src/http/SmartFetch');
 
 const POSTMAN_ECHO_SERVICE_DELAY_URL = 'https://postman-echo.com/delay';
 
-describe.only('SmartFetch test', function () {
+describe('SmartFetch test', function () {
   this.timeout(10000);
   const smartFetch = new SmartFetch();
 
-  it('should count requests', async () => {
+  it('should count active/total requests', async () => {
     const first = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/1`);
     expect(smartFetch.getActive()).equals(1);
     expect(smartFetch.getTotal()).equals(1);
@@ -26,5 +26,9 @@ describe.only('SmartFetch test', function () {
     expect(smartFetch.getActive()).equals(0);
 
     expect(smartFetch.getTotal()).equals(3);
+  });
+
+  it('should collect errors', () => {
+    const first = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/1`);
   });
 });
