@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { it } from 'vitest';
 import { Equal, Expect } from './type-utils';
 
 /**
@@ -25,6 +26,7 @@ const Comment = ObjectWithId.merge(
   }),
 );
 
+it.todo('test', () => {});
 /*
 type cases = [
   Expect<Equal<z.infer<typeof Comment>, { id: string; text: string }>>,

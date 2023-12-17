@@ -1,3 +1,4 @@
+import { it } from 'vitest';
 import { z } from 'zod';
 import { Equal, Expect } from './type-utils';
 
@@ -24,6 +25,7 @@ const Comment = z.object({
   text: z.string(),
 });
 
+it.todo('test', () => {});
 /*
 type cases = [
   Expect<Equal<z.infer<typeof Comment>, { id: string; text: string }>>,

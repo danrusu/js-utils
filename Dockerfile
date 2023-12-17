@@ -1,10 +1,8 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /opt/js-utils
 
-COPY src ./src
-COPY test ./test
-COPY package.json ./
+COPY . .
 
 RUN npm install
 
