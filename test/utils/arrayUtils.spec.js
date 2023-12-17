@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const { range, shuffle, unique } = require('../../src/utils/arrayUtils');
+import { expect, describe, it } from 'vitest';
+import { range, shuffle, unique } from '../../src/utils/arrayUtils';
 
-describe('arrayUtils', () => {
+describe.concurrent('arrayUtils', () => {
   describe('shuffle test', () => {
     it('shuffles array', () => {
       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

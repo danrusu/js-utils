@@ -1,5 +1,6 @@
-const { expect } = require('chai');
+import { expect, describe, it } from 'vitest';
 const { table } = require('../../src/html/tableGenerator');
+
 describe('html', () => {
   describe('tableGenerator', () => {
     describe('table (similar to console.table)', () => {

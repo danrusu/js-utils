@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+import { expect, describe, it } from 'vitest';
 
 const Status = function (status) {
   this.status = status;

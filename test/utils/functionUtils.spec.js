@@ -1,5 +1,4 @@
-const { assert } = require('chai');
-
+import { assert, describe, it } from 'vitest';
 const { validateMandatoryParams } = require('../../src/utils/functionUtils');
 
 describe('functionUtils', () => {

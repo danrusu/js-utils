@@ -1,12 +1,11 @@
-const { expect } = require('chai');
-const { shuffle } = require('../../src/utils/arrayUtils');
-const { getBrokenUrls } = require('../../src/utils/urlUtils');
+import { expect, describe, it } from 'vitest';
+import { shuffle } from '../../src/utils/arrayUtils';
+import { getBrokenUrls } from '../../src/utils/urlUtils';
 
 describe('urlValidation', () => {
   const POSTMAN_ECHO_SERVICE_URL = 'https://postman-echo.com';
 
   describe('getBrokenUrls', function () {
-    this.timeout(5000);
     it('should collect broken urls', async () => {
       const delayUrls = Array(90).fill(`${POSTMAN_ECHO_SERVICE_URL}/delay/1`);
       const errorUrls = Array(5).fill(`${POSTMAN_ECHO_SERVICE_URL}/status/500`);
@@ -52,4 +51,4 @@ describe('urlValidation', () => {
       ]);
     });
   });
-});
+}, 5000);

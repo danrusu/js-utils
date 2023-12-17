@@ -1,20 +1,20 @@
-const { assert, expect } = require('chai');
+import { expect, describe, it } from 'vitest';
 const { SmartFetch } = require('../../src/http/SmartFetch');
 
 const POSTMAN_ECHO_SERVICE_DELAY_URL = 'https://postman-echo.com/delay';
+const delayUrl = delay => `${POSTMAN_ECHO_SERVICE_DELAY_URL}/${delay}`;
 
 describe('SmartFetch test', function () {
-  this.timeout(10000);
   const smartFetch = new SmartFetch();
 
   it('should count active/total requests', async () => {
-    const first = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/1`);
+    const first = smartFetch.fetch(delayUrl(1));
     expect(smartFetch.getActive()).equals(1);
     expect(smartFetch.getTotal()).equals(1);
-    const second = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/2`);
+    const second = smartFetch.fetch(delayUrl(2));
     expect(smartFetch.getActive()).equals(2);
     expect(smartFetch.getTotal()).equals(2);
-    const third = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/3`);
+    const third = smartFetch.fetch(delayUrl(3));
     expect(smartFetch.getActive()).equals(3);
     expect(smartFetch.getTotal()).equals(3);
 
@@ -28,7 +28,7 @@ describe('SmartFetch test', function () {
     expect(smartFetch.getTotal()).equals(3);
   });
 
-  it('should collect errors', () => {
-    const first = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/1`);
+  it.todo('should collect errors', () => {
+    //const first = smartFetch.fetch(`${POSTMAN_ECHO_SERVICE_DELAY_URL}/1`);
   });
-});
+}, 10000);

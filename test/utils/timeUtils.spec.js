@@ -1,9 +1,7 @@
-const { expect } = require('chai');
-
+import { expect, describe, it } from 'vitest';
 const { logDuration } = require('../../src/utils/timeUtils');
 
 describe('logDuration', function () {
-  this.timeout(5000);
   const POSTMAN_ECHO_SERVICE_DELAY_URL = 'https://postman-echo.com/delay';
 
   async function getInfo(returnValue) {
@@ -15,5 +13,5 @@ describe('logDuration', function () {
   it('should log duration and return the action return value', async () => {
     const result = await logDuration('getInfo', getInfo, 100);
     expect(result).equals(100);
-  });
+  }, 5000);
 });

@@ -1,4 +1,4 @@
-const { expect, assert } = require('chai');
+import { expect, assert, describe, it } from 'vitest';
 const softAssert = require('../../src/utils/assertUtils')();
 
 describe('softAssert', () => {
