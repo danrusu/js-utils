@@ -6,6 +6,8 @@ COPY . .
 
 RUN npm install
 
+ENV CI=true
+
 ENTRYPOINT [ "npm", \
   "test" \
 ]

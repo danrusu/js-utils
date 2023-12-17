@@ -13,7 +13,7 @@ const status2 = {
   status: 'FAIL',
 };
 
-describe.only('Prototype test', () => {
+describe('Prototype test', () => {
   it('Test apply and closure', () => {
     console.log(status1.getStatus());
     console.log(status1.getStatus.apply(status2));

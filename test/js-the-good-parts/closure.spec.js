@@ -8,7 +8,7 @@ const quo = function (statusObj) {
   };
 };
 
-describe.only('closure', () => {
+describe('closure', () => {
   it('function closes over passed parameter, an object in this case', () => {
     const status = { status: 'amazed' };
     const myQuo = quo(status);

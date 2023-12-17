@@ -6,7 +6,7 @@ describe('urlValidation', () => {
   const POSTMAN_ECHO_SERVICE_URL = 'https://postman-echo.com';
 
   describe('getBrokenUrls', function () {
-    it('should collect broken urls', async () => {
+    it.skip('should collect broken urls', async () => {
       const delayUrls = Array(90).fill(`${POSTMAN_ECHO_SERVICE_URL}/delay/1`);
       const errorUrls = Array(5).fill(`${POSTMAN_ECHO_SERVICE_URL}/status/500`);
       const notFoundUrls = Array(5).fill(
@@ -30,7 +30,7 @@ describe('urlValidation', () => {
         ...Array(5).fill(500),
       ];
       expect(brokenUrlsStatuses).to.deep.equal(EXPECTED_BROKEN_URLS_STATUSES);
-    });
+    }, 10000);
 
     it('should collect correct errors in case of httpClient failures', async () => {
       const MOCK_HTTP_CLIENT = url => Promise.reject('NETWORK ERROR');
@@ -51,4 +51,4 @@ describe('urlValidation', () => {
       ]);
     });
   });
-}, 5000);
+});
