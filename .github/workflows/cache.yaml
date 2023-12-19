@@ -18,9 +18,7 @@ jobs:
         with:
           path: |
             ~/x.txt
-          # key: CACHED_FILE
-          restore-keys: |
-            CACHED_FILE_RESTORE
+          key: CACHED_FILE
 
   second:
     needs: first
@@ -35,5 +33,5 @@ jobs:
         with:
           path: |
             ~/x.txt
-          restore-keys: CACHED_FILE_RESTORE
+          restore-keys: CACHED_FILE
       - run: cat ~/x.txt
