@@ -20,6 +20,7 @@ jobs:
           path: |
             ~/x.txt
           key: CACHED_FILE
+          restore-key: CACHED_FILE
 
   second:
     needs: first
