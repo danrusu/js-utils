@@ -10,17 +10,20 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
       - name: Create file
-        run: echo "@@@" > ~/x.txt
+        run: npm install cpx
 
       - name: Cache file
-        uses: actions/cache@v3
+        uses: actions/cache/save@v3
         id: save-file
         with:
           path: |
-            ~/x.txt
-          key: CACHED_FILE
-          restore-key: CACHED_FILE
+            ./node_modules
+          key: npm-cache-${{ hashfiles('package-lock.json') }}
+          restore-key: npm-cache-${{ hashfiles('package-lock.json') }}
 
   second:
     needs: first
@@ -34,6 +37,6 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: |
-            ~/x.txt
-          key: CACHED_FILE
-      - run: cat ~/x.txt
+            ./node_modules
+          key: npm-cache-${{ hashfiles('package-lock.json') }}
+      - run: npx cpx
