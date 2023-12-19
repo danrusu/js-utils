@@ -18,12 +18,11 @@ jobs:
       - name: Build
         run: npm install
 
-      - name: Cache node_modules
+      - name: Cache all project
         uses: actions/cache/save@v3
-        id: node_modules
         with:
           path: |
-            ./node_modules
+            .
           key: npm-cache-${{ hashfiles('package-lock.json') }}
 
       # - name: Build docker image
@@ -41,10 +40,9 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache/save@v3
-        id: node_modules
         with:
           path: |
-            ./node_modules
+            .
           key: npm-cache-${{ hashfiles('package-lock.json') }}
 
       - name: tests
