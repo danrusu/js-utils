@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  first:
-    name: Build
+  build:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
 
@@ -24,9 +23,8 @@ jobs:
             ./node_modules
           key: npm-cache-${{ hashfiles('package-lock.json') }}
 
-  second:
-    needs: first
-    name: test
+  test:
+    needs: build
     runs-on: ubuntu-20.04
     timeout-minutes: 10
 

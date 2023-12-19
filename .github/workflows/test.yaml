@@ -7,8 +7,7 @@ on:
       - master
 
 jobs:
-  api-tests:
-    name: TESTS
+  build:
     runs-on: ubuntu-20.04
     timeout-minutes: 5
 
@@ -16,8 +15,37 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Build docker image
-        run: docker build -t js-utils .
+      - name: Build
+        run: npm install
 
-      - name: Run tests
-        run: docker run --rm js-utils
+      - name: Cache node_modules
+        uses: actions/cache/save@v3
+        id: node_modules
+        with:
+          path: |
+            ./node_modules
+          key: npm-cache-${{ hashfiles('package-lock.json') }}
+
+      # - name: Build docker image
+      #   run: docker build -t js-utils .
+
+      # - name: Run tests
+      #   run: docker run --rm js-utils
+  test:
+    needs: build
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Restore node_modules
+        uses: actions/cache/save@v3
+        id: node_modules
+        with:
+          path: |
+            ./node_modules
+          key: npm-cache-${{ hashfiles('package-lock.json') }}
+
+      - name: tests
+        run: npm test
