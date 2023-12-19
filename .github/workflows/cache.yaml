@@ -1,0 +1,39 @@
+name: cache_poc\
+
+on:
+  workflow_dispatch:
+
+jobs:
+  first:
+    name: Build
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Create file
+        run: echo "@@@" > ~/x.txt
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/x.txt
+          key: CACHED_FILE
+          restore-keys: |
+            CACHED_FILE_RESTORE
+
+  second:
+    needs: first
+    name: test
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Restore cached Primes
+        id: cache-restore
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ~/x.txt
+          key: CACHED_FILE
+      - run: cat ~/x.txt
