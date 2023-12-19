@@ -1,4 +1,4 @@
-name: cache_poc\
+name: cache_poc
 
 on:
   workflow_dispatch:
