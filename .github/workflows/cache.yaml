@@ -13,7 +13,7 @@ jobs:
       - name: Create file
         run: echo "@@@" > ~/x.txt
 
-      - name: Cache
+      - name: Cache file
         uses: actions/cache/save@v3
         id: save-file
         with:
@@ -28,11 +28,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Restore cached Primes
+      - name: Restore cached file
         id: restore-file
         uses: actions/cache/restore@v3
         with:
-          # path: |
-          #   ~/x.txt
+          path: |
+            ~/x.txt
           key: CACHED_FILE
       - run: cat ~/x.txt
