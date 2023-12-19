@@ -35,5 +35,5 @@ jobs:
         with:
           path: |
             ~/x.txt
-          key: CACHED_FILE_RESTORE
+          restore-keys: CACHED_FILE_RESTORE
       - run: cat ~/x.txt
