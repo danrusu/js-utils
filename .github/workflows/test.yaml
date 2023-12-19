@@ -1,4 +1,4 @@
-name: TESTS
+name: tests
 
 on:
   workflow_dispatch:
@@ -18,11 +18,11 @@ jobs:
       - name: Build
         run: npm install
 
-      - name: Cache all project
+      - name: Cache dependencies
         uses: actions/cache@v3
         with:
           path: |
-            .
+            ./node_modules
           key: npm-cache-${{ hashfiles('package-lock.json') }}
 
       # - name: Build docker image
@@ -35,15 +35,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Restore project
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
         uses: actions/cache@v3
         with:
           path: |
-            .
+            ./node_modules
           key: npm-cache-${{ hashfiles('package-lock.json') }}
-
-      - name: List
-        run: ls -all .
 
       - name: Tests
         run: npm test
