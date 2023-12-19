@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
@@ -32,18 +32,18 @@ jobs:
       #   run: docker run --rm js-utils
   test:
     needs: build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Restore node_modules
+      - name: Restore project
         uses: actions/cache@v3
         with:
           path: |
             .
           key: npm-cache-${{ hashfiles('package-lock.json') }}
 
-      - name: tests
+      - name: List
+        run: ls -all .
+
+      - name: Tests
         run: npm test
