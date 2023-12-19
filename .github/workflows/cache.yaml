@@ -14,11 +14,12 @@ jobs:
         run: echo "@@@" > ~/x.txt
 
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache/save@v3
+        id: save-file
         with:
           path: |
             ~/x.txt
-          restore-key: CACHED_FILE
+          key: CACHED_FILE
 
   second:
     needs: first
@@ -28,10 +29,10 @@ jobs:
 
     steps:
       - name: Restore cached Primes
-        id: cache-restore
+        id: restore-file
         uses: actions/cache/restore@v3
         with:
-          path: |
-            ~/x.txt
+          # path: |
+          #   ~/x.txt
           key: CACHED_FILE
       - run: cat ~/x.txt
