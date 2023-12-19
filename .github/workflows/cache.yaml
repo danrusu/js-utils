@@ -13,17 +13,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Create file
+      - name: Install project
         run: npm install cpx
 
-      - name: Cache file
+      - name: Cache mode_modules
         uses: actions/cache/save@v3
         id: save-file
         with:
           path: |
             ./node_modules
           key: npm-cache-${{ hashfiles('package-lock.json') }}
-          restore-key: npm-cache-${{ hashfiles('package-lock.json') }}
 
   second:
     needs: first
@@ -32,11 +31,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Restore cached file
+      - name: Restore cached
         id: restore-file
         uses: actions/cache/restore@v3
         with:
           path: |
             ./node_modules
           key: npm-cache-${{ hashfiles('package-lock.json') }}
-      - run: npx cpx
+      - run: npx cpx -h
